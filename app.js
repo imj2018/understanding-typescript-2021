@@ -2,19 +2,46 @@
 //  name: string;
 //  age: number; 
 // } = {
+// const person: {
+//     name: string;
+//     age: number;
+//     hobbies: string[];
+//     role: [number, string];
+// } = {
+//     name: 'Maximilian',
+//     age: 30,
+//     hobbies: ['Sports', 'Cooking'],
+//     role: [2, 'author']
+// };
+// const ADMIN = 0;
+// const READ_ONLY = 1;
+// const AUTHOR = 2;
+/**
+ * enum useful for easier identifiers to a mapped value
+ *
+ *
+ */
+var Role;
+(function (Role) {
+    Role["ADMIN"] = "ADMIN";
+    Role[Role["READ_ONLY"] = 100] = "READ_ONLY";
+    Role[Role["AUTHOR"] = 200] = "AUTHOR";
+})(Role || (Role = {}));
+; // can assign any number or strings, numbers after will increment
 var person = {
     name: 'Maximilian',
     age: 30,
     hobbies: ['Sports', 'Cooking'],
-    role: [2, 'author'] // tuple first element numeric id or second string id i.e description for this context
+    role: Role.ADMIN
 };
-person.role.push('admin'); // add admin to end off array, typescript does not know only 2 elements are needed
-// push cannot be caught by typescript
-//person.role[1] = 10; // the second element (index[1]) to a number 
-person.role = [0, 'admin'];
+//person.role.push('admin');
+//person.role = [0, 'admin'];
 var favoriteActivities;
 favoriteActivities = ['Sports'];
 for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
     var hobby = _a[_i];
     console.log(hobby.toUpperCase());
+}
+if (person.role === Role.ADMIN) {
+    console.log('is admin');
 }
