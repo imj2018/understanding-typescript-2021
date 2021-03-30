@@ -1,15 +1,19 @@
-//const person: object = { // hover over, this is the object type inferred by typescript
-// which gives a key and type pair. if type object, typescript knows nothin about object
-//const person: {} = { // {} typescript specialized notation of object types to provide information
-// const person: { name: string, age: number } = { // pass key and type pair
-//     name: 'Maximilian',
-//     age: 30
-// };
-const person = { // best to let typescript infer
+// const person: { name: string; age: number; }
+//     = {}
+
+const person = {
     name: 'Maximilian',
-    age: 30
+    age: 30,
+    hobbies: ['Sports', 'Cooking'] // typscript inferred a string array
+};
+
+let favoriteActivities: string[];
+//let favoriteActivities: any[]; // using any too many times can defeat the purpose of typescript
+//favoriteActivities = ['Sports', 1];
+favoriteActivities = ['Sports'];
+
+for (const hobby of person.hobbies) {
+    console.log(hobby.toUpperCase()); // can use methods for strings
+    //console.log(hobby.map()); map works on arrays not strings
+
 }
-
-console.log(person.name);
-
-
