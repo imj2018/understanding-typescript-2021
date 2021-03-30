@@ -1,48 +1,14 @@
-// const person: {
-//  name: string;
-//  age: number; 
-// } = {
-
-// const person: {
-//     name: string;
-//     age: number;
-//     hobbies: string[];
-//     role: [number, string];
-// } = {
-//     name: 'Maximilian',
-//     age: 30,
-//     hobbies: ['Sports', 'Cooking'],
-//     role: [2, 'author']
-// };
-
-// const ADMIN = 0;
-// const READ_ONLY = 1;
-// const AUTHOR = 2;
-
-/**
- * enum useful for easier identifiers to a mapped value
- * 
- * 
- */
-enum Role { ADMIN = 'ADMIN', READ_ONLY = 100, AUTHOR = 200 }; // can assign any number or strings, numbers after will increment
-
-const person = {
-    name: 'Maximilian',
-    age: 30,
-    hobbies: ['Sports', 'Cooking'],
-    role: Role.ADMIN
-};
-
-//person.role.push('admin');
-//person.role = [0, 'admin'];
-
-let favoriteActivities: string[];
-favoriteActivities = ['Sports'];
-
-for (const hobby of person.hobbies) {
-    console.log(hobby.toUpperCase());
+function combine(input1: number | string, input2: number | string) { // typescripts knows there is a union (number | string) but cannot know if the + operator can be used
+    let result;
+    if (typeof input1 === 'number' && typeof input2 === 'number') { // a js, or runtime check is sometimes needed with union types
+        result = input1 + input2;
+    } else {
+        result = input1.toString() + input2.toString();
+    }
+    return result;
 }
 
-if (person.role === Role.ADMIN) {
-    console.log('is admin');
-}
+const combinedAges = combine(30, 26);
+const combinedName = combine('Max', 'Anna');
+console.log(combinedAges);
+console.log(combinedName);

@@ -1,47 +1,14 @@
-// const person: {
-//  name: string;
-//  age: number; 
-// } = {
-// const person: {
-//     name: string;
-//     age: number;
-//     hobbies: string[];
-//     role: [number, string];
-// } = {
-//     name: 'Maximilian',
-//     age: 30,
-//     hobbies: ['Sports', 'Cooking'],
-//     role: [2, 'author']
-// };
-// const ADMIN = 0;
-// const READ_ONLY = 1;
-// const AUTHOR = 2;
-/**
- * enum useful for easier identifiers to a mapped value
- *
- *
- */
-var Role;
-(function (Role) {
-    Role["ADMIN"] = "ADMIN";
-    Role[Role["READ_ONLY"] = 100] = "READ_ONLY";
-    Role[Role["AUTHOR"] = 200] = "AUTHOR";
-})(Role || (Role = {}));
-; // can assign any number or strings, numbers after will increment
-var person = {
-    name: 'Maximilian',
-    age: 30,
-    hobbies: ['Sports', 'Cooking'],
-    role: Role.ADMIN
-};
-//person.role.push('admin');
-//person.role = [0, 'admin'];
-var favoriteActivities;
-favoriteActivities = ['Sports'];
-for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
-    var hobby = _a[_i];
-    console.log(hobby.toUpperCase());
+function combine(input1, input2) {
+    var result;
+    if (typeof input1 === 'number' && typeof input2 === 'number') {
+        result = input1 + input2;
+    }
+    else {
+        result = input1.toString() + input2.toString();
+    }
+    return result;
 }
-if (person.role === Role.ADMIN) {
-    console.log('is admin');
-}
+var combinedAges = combine(30, 26);
+var combinedName = combine('Max', 'Anna');
+console.log(combinedAges);
+console.log(combinedName);
