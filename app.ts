@@ -1,8 +1,16 @@
+/**
+ * can use type alias/custom type, can be cumbersome to always use union
+ * 
+ * 
+ */
+//type Combinable = number;
+type Combinable = number | string;
+type ConversionDescriptor = 'as-number' | 'as-text';
+
 function combine(
-    input1: number | string,
-    input2: number | string,
-    //resultConversion: string // conversion from number to string vice versa
-    resultConversion: 'as-number' | 'as-text' // union can be used with literal types (could use enum), won't be able to pass any other type to resultConversion
+    input1: Combinable,
+    input2: Combinable,
+    resultConversion: ConversionDescriptor
 ) {
     let result;
     if (typeof input1 === 'number' && typeof input2 === 'number'

@@ -1,7 +1,4 @@
-function combine(input1, input2, 
-//resultConversion: string // conversion from number to string vice versa
-resultConversion // union can be used with literal types (could use enum), won't be able to pass any other type to resultConversion
-) {
+function combine(input1, input2, resultConversion) {
     var result;
     if (typeof input1 === 'number' && typeof input2 === 'number'
         || resultConversion === 'as-number') {
