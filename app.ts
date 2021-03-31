@@ -1,4 +1,30 @@
 /**
+ * type alias for objects
+ *
+ *
+ */
+type User = { name: string, age: number }
+const user1 = { number: 'Max', age: '30' }
+
+// function greet(user: { name: string; age: number }) { 
+//     console.log('Hi, I am ' + user.name);
+// }
+
+// function isOlder(user: { name: string; age: number }, checkAge: number) {
+//     return checkAge > user.age;
+// }
+
+function greet(user: User) { // instead of above
+    console.log('Hi, I am ' + user.name);
+}
+
+function isOlder(user: User, checkAge: number) {
+    return checkAge > user.age;
+}
+
+
+
+/**
  * can use type alias/custom type, can be cumbersome to always use union
  * 
  * 
@@ -19,20 +45,8 @@ function combine(
     } else {
         result = input1.toString() + input2.toString();
     }
-    //console.log(result);
     return result;
 
-    /**
-     *  if as-number passed convert to number else string
-     * 
-     * 
-     */
-    // if (resultConversion === 'as-number') {
-    //     return +result;
-    //     //return parseFloat(result); // will alsp parse to number
-    // } else {
-    //     return result.toString();
-    // }
 }
 
 const combinedAges = combine(30, 26, 'as-number');
