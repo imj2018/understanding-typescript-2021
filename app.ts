@@ -1,16 +1,22 @@
-function add(n1: number, n2: number): number { // can infer the return type of a function
-    // return n1.toString() + n2.toString();
+function add(n1: number, n2: number): number {
     return n1 + n2;
 }
 
-//function printResult(num: number): void { // js does not have void, typescript does. 
 function printResult(num: number): void {
     console.log('Result: ' + num);
-    //return; // undefined works but void should be used, return assumes no value is returned
-    return; // can do this for void
+    return;
 }
 
-console.log(printResult(add(5, 12))); // returns undefined (not void), js confusingly has as value undefined e.g can't find property on an object that is non existant
+console.log(printResult(add(5, 12)));
 
-let someValue: undefined; // undefined is a type in typescript, unknown use?
+
+//let combineValue: Function; // issue is typescript sees this as any, must set the type to Function
+//let combineValues: () => number; // no curly braces, not an arrow function but a function type, right side => is the return type to store. combineValues accepts any function i.e empty () then return a number
+let combineValues: (a: number, b: number) => number; // store a function that takes two numbers and stores a number, no need to match the parameter names just the type
+
+combineValues = add;
+//combineValue = 5;
+//combineValues = printResult;
+
+console.log(combineValues(8, 8)); // js can store a pointer in a variable, that variable can then be executed as a function
 
