@@ -1,30 +1,12 @@
-var user1 = { number: 'Max', age: '30' };
-// function greet(user: { name: string; age: number }) { // not needed
-//     console.log('Hi, I am ' + user.name);
-// }
-// function isOlder(user: { name: string; age: number }, checkAge: number) {
-//     return checkAge > user.age;
-// }
-function greet(user) {
-    console.log('Hi, I am ' + user.name);
+function add(n1, n2) {
+    // return n1.toString() + n2.toString();
+    return n1 + n2;
 }
-function isOlder(user, checkAge) {
-    return checkAge > user.age;
+//function printResult(num: number): void { // js does not have void, typescript does. 
+function printResult(num) {
+    console.log('Result: ' + num);
+    //return; // undefined works but void should be used, return assumes no value is returned
+    return; // can do this for void
 }
-function combine(input1, input2, resultConversion) {
-    var result;
-    if (typeof input1 === 'number' && typeof input2 === 'number'
-        || resultConversion === 'as-number') {
-        result = (+input1) + (+input2);
-    }
-    else {
-        result = input1.toString() + input2.toString();
-    }
-    return result;
-}
-var combinedAges = combine(30, 26, 'as-number');
-var combinedName = combine('Max', 'Anna', 'as-text');
-var combinedStringAges = combine('30', '26', 'as-number');
-console.log(combinedAges);
-console.log(combinedName);
-console.log(combinedStringAges);
+console.log(printResult(add(5, 12))); // returns undefined (not void), js confusingly has as value undefined e.g can't find property on an object that is non existant
+var someValue; // undefined is a type in typescript, unknown use?

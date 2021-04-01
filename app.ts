@@ -1,58 +1,16 @@
-/**
- * type alias for objects
- *
- *
- */
-type User = { name: string, age: number }
-const user1 = { number: 'Max', age: '30' }
-
-// function greet(user: { name: string; age: number }) { 
-//     console.log('Hi, I am ' + user.name);
-// }
-
-// function isOlder(user: { name: string; age: number }, checkAge: number) {
-//     return checkAge > user.age;
-// }
-
-function greet(user: User) { // instead of above
-    console.log('Hi, I am ' + user.name);
+function add(n1: number, n2: number): number { // can infer the return type of a function
+    // return n1.toString() + n2.toString();
+    return n1 + n2;
 }
 
-function isOlder(user: User, checkAge: number) {
-    return checkAge > user.age;
+//function printResult(num: number): void { // js does not have void, typescript does. 
+function printResult(num: number): void {
+    console.log('Result: ' + num);
+    //return; // undefined works but void should be used, return assumes no value is returned
+    return; // can do this for void
 }
 
+console.log(printResult(add(5, 12))); // returns undefined (not void), js confusingly has as value undefined e.g can't find property on an object that is non existant
 
+let someValue: undefined; // undefined is a type in typescript, unknown use?
 
-/**
- * can use type alias/custom type, can be cumbersome to always use union
- * 
- * 
- */
-//type Combinable = number;
-type Combinable = number | string;
-type ConversionDescriptor = 'as-number' | 'as-text';
-
-function combine(
-    input1: Combinable,
-    input2: Combinable,
-    resultConversion: ConversionDescriptor
-) {
-    let result;
-    if (typeof input1 === 'number' && typeof input2 === 'number'
-        || resultConversion === 'as-number') {
-        result = (+input1) + (+input2);
-    } else {
-        result = input1.toString() + input2.toString();
-    }
-    return result;
-
-}
-
-const combinedAges = combine(30, 26, 'as-number');
-const combinedName = combine('Max', 'Anna', 'as-text');
-const combinedStringAges = combine('30', '26', 'as-number');
-
-console.log(combinedAges);
-console.log(combinedName);
-console.log(combinedStringAges);
