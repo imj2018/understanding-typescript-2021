@@ -1,16 +1,12 @@
-function add(n1, n2) {
-    return n1 + n2;
+/**
+ * unknown should be used over any
+ * if the type is know in advanced e.g string | number use the type or union
+ *
+ */
+var userInput; // unknown what user input will be
+var userName;
+userInput = 5;
+userInput = 'Max';
+if (typeof userInput === 'string') { // unknown needs a check
+    userName = userInput; // not the any type, cannot assign string to type unknown
 }
-var combineValues;
-combineValues = add;
-console.log(combineValues(8, 8));
-function addAndHandle(n1, n2, cb) {
-    // call back functions are strict in typescript
-    var result = n1 + n2;
-    cb(result);
-}
-// addAndHandle(10, 20, () => { }); // pass an anonymous function for the callback
-addAndHandle(10, 20, function (result) {
-    console.log(result);
-    //return result;
-});
