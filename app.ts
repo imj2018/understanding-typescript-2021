@@ -2,21 +2,20 @@ function add(n1: number, n2: number): number {
     return n1 + n2;
 }
 
-function printResult(num: number): void {
-    console.log('Result: ' + num);
-    return;
-}
-
-console.log(printResult(add(5, 12)));
-
-
-//let combineValue: Function; // issue is typescript sees this as any, must set the type to Function
-//let combineValues: () => number; // no curly braces, not an arrow function but a function type, right side => is the return type to store. combineValues accepts any function i.e empty () then return a number
-let combineValues: (a: number, b: number) => number; // store a function that takes two numbers and stores a number, no need to match the parameter names just the type
+let combineValues: (a: number, b: number) => number;
 
 combineValues = add;
-//combineValue = 5;
-//combineValues = printResult;
+console.log(combineValues(8, 8));
 
-console.log(combineValues(8, 8)); // js can store a pointer in a variable, that variable can then be executed as a function
 
+function addAndHandle(n1: number, n2: number, cb: (num: number) => void) { // the callback function will not return anything but takes a number, anything returned will not be used
+    // call back functions are strict in typescript
+    const result = n1 + n2;
+    cb(result);
+}
+
+// addAndHandle(10, 20, () => { }); // pass an anonymous function for the callback
+addAndHandle(10, 20, (result) => { // passed the call back, typescript knows the function passed is a number
+    console.log(result);
+    //return result;
+});
