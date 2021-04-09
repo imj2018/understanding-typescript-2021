@@ -1,0 +1,101 @@
+[33mcommit aa3bd3633e768084fe634f9bc9a2a98e3f630ef7[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Your Name <you@example.com>
+Date:   Sat Apr 3 12:03:01 2021 +1000
+
+    40 - compiling, lib, soureMap
+
+[33mcommit 305b1ceb959569feedbf25c7032c1e468bd504e7[m
+Author: Your Name <you@example.com>
+Date:   Sat Apr 3 10:40:28 2021 +1000
+
+    never
+
+[33mcommit 33491892d650c421f57a93aebbcb8018ebc1a691[m
+Author: Your Name <you@example.com>
+Date:   Fri Apr 2 08:35:10 2021 +1000
+
+    unknown
+
+[33mcommit 01fa29ae0e38bba0a6a769a55e8b042f4c589d34[m
+Author: Your Name <you@example.com>
+Date:   Thu Apr 1 13:38:57 2021 +1000
+
+    function types, callbacks
+
+[33mcommit 987a34e2e72015c084d2cf7f8154f00175831327[m
+Author: Your Name <you@example.com>
+Date:   Thu Apr 1 12:35:05 2021 +1000
+
+    27 - functions as types (() => as return explan..)
+
+[33mcommit 4e5f3baf09db5998e4a4063fe9ad41bcfcee41b0[m
+Author: Your Name <you@example.com>
+Date:   Thu Apr 1 12:03:57 2021 +1000
+
+    function return types, void, undefined
+
+[33mcommit a238a7fef91f786d9919555f0a39d173aa1aae96[m
+Author: Your Name <you@example.com>
+Date:   Thu Apr 1 08:18:34 2021 +1000
+
+    24/25 alias, custome type, object
+
+[33mcommit a159b759a2736af1828373a694f3f5e0e3afe485[m
+Author: Your Name <you@example.com>
+Date:   Thu Apr 1 07:48:31 2021 +1000
+
+    alias, custome type
+
+[33mcommit 2b3a003092fd036b66ffa49955a1f216d77eaf0e[m
+Author: Your Name <you@example.com>
+Date:   Thu Apr 1 07:40:59 2021 +1000
+
+    literal, literal with union
+
+[33mcommit 800d2cf5458d7f449b319513deba601862d828d4[m
+Author: Your Name <you@example.com>
+Date:   Wed Mar 31 07:55:02 2021 +1000
+
+    22 - union
+
+[33mcommit aa67d5550cc8e1ad6048bd56788e3e5eb6b28d9c[m
+Author: Your Name <you@example.com>
+Date:   Tue Mar 30 14:02:20 2021 +1000
+
+    20 - enums
+
+[33mcommit 17204c68cb0dbda93946b3f629e5cb3d16c885d4[m
+Author: Your Name <you@example.com>
+Date:   Tue Mar 30 11:49:17 2021 +1000
+
+    19 - tuples
+
+[33mcommit 4a71f7d9ec845a46073110132315a9b933c8d381[m
+Author: Your Name <you@example.com>
+Date:   Tue Mar 30 10:46:18 2021 +1000
+
+    17 - arrays
+
+[33mcommit ca3c0a50f2ca81cb0e4374d72cc54d7592adfbcc[m
+Author: Your Name <you@example.com>
+Date:   Tue Mar 30 08:19:06 2021 +1000
+
+    16 - objects
+
+[33mcommit f1e9a02f3c95a3abc92f499456315e1d09a557d0[m
+Author: Your Name <you@example.com>
+Date:   Tue Mar 30 07:23:58 2021 +1000
+
+    15 - type inference
+
+[33mcommit 75cf098ad2aeaacfbad904806ef2001e0fce7633[m
+Author: Your Name <you@example.com>
+Date:   Mon Mar 29 09:10:00 2021 +1000
+
+    14 example on string conversion passing phrase
+
+[33mcommit 2b4fa59ab55b964fe402bfd3a12cd416785e6a9f[m
+Author: Your Name <you@example.com>
+Date:   Mon Mar 29 07:45:53 2021 +1000
+
+    14
