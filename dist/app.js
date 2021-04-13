@@ -9,6 +9,17 @@
  * "noEmit": true, if there are compilation errors it won't compile
  */
 const button = document.querySelector('button');
-button.addEventListener('click', () => { console.log('Clicked!'); } // click event, anonymous function to log Clicked!
-);
+let appId = 'abc';
+function add(n1, n2) {
+    if (n1 + n2 > 0) {
+        return n1 + n2;
+    }
+    return;
+}
+function clickHander(message) {
+    //let userName = "yippee";
+    console.log("Clicked!", +message);
+}
+// button.addEventListener('click', () => { console.log('Clicked!') } // click event, anonymous function to log Clicked!
+button.addEventListener('click', clickHander.bind(null, 'yes'));
 //# sourceMappingURL=app.js.map
