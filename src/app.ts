@@ -1,15 +1,19 @@
 
 
-//const add = (a: number = 1, b?: number) => a + b;
-const add = (a: number = 1, b: number = 1) => a + b; // default arguments must be called last, if not optional
+const hobbies = ['Sports', 'Cooking'];
+//console.log(hobbies[0]);
 
-const printOutput: (a: number | string) => void = output => console.log(output);// will work in typescript if as a function type (type assigned to function)
+const activeHobbies = ['Hiking', ...hobbies]; // spread an existing array into the array, can be used whenever there is a , delimiter
 
-const button = document.querySelector('button')!;
+//activeHobbies.push(); // though declared as a constant an array is an object which is a reference type in js, push will change the memory not the address
+//activeHobbies.push(hobbies); // adding hobbies will just add the hobbies array as a nested array, typescript will not allow this
+//activeHobbies.push(hobbies[0], hobbies[1]); 
+activeHobbies.push(...hobbies); // point at the array or object to spread, pull all values from hobbies and add them as a list of individual values
 
-// if (button) {
-button.addEventListener('click', event => console.log(event)) // if not parameters () => {...}, typescript can infer it's an event object
-// }
-//button.addEventListener('click', function (event) { console.log(event) }) // hmmm....
+const person = {
+    name: 'Max',
+    age: 30
+};
 
-printOutput(add(5));
+// const copiedPerson = person; // not a copy but a reference
+const copiedPerson = { ...person };
