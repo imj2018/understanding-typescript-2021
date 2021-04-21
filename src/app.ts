@@ -3,7 +3,8 @@ class Department {
     // public name: string; // public default
     private employees: string[] = []; // only accessible inside class/object
 
-    constructor(private id: string, private name: string) { // shortcut for initialization, a property is created and the value stored
+    constructor(private readonly id: string, private name: string) { // readonly is typescript not js, you can no longer write to this property
+        // shortcut for initialization, a property is created and the value stored
         // this.id = id;
         // this.name = n;
     }
@@ -18,6 +19,7 @@ class Department {
 
     addEmployee(employee: string) {
         // validation etc.
+        //this.id = 'd2';
         this.employees.push(employee);
     }
 
@@ -28,15 +30,41 @@ class Department {
     }
 }
 
-const accounting = new Department('d1', 'Accounting');
+class ITDepartment extends Department { // base constructor will be called
+    public admins[];
+    constructor(id: string, public admins: string[]) {
+        super(id, 'IT'); // base class constructor
+        this.admins = admins; // has to be called after super
+    }
+}
 
-accounting.addEmployee('Max');
-accounting.addEmployee('Menu');
+class AccountingDepartment extends Department {
+    constructor(id: string, public reports: string[]) {
+        super(id, 'Accounting');
+    }
+
+    addReports(text: string) {
+        this.reports.push(text);
+    }
+
+    printReports() {
+        console.log(this.reports)
+    }
+}
+
+
+// const accounting = new Department('d1', 'Accounting');
+//const accounting = new ITDepartment('d1', ['Max']);
+const it = new ITDepartment('d1', ['Max']);
+
+it.addEmployee('Max');
+it.addEmployee('Bob');
 
 //accounting.employees[2] = 'Joe'; // should not be able to directly assign, colleuge may assign this way/addEmployeee may need validation etc.
 
-accounting.describe();
-accounting.printEmployeeInformation();
+it.describe();
+it.printEmployeeInformation();
+console.log(it);
 //console.log(accounting);
 
 //const accountingCopy = { describe: accounting.describe };  // the object created is not based on the Departments class/any specific class
@@ -44,3 +72,6 @@ accounting.printEmployeeInformation();
 // const accountingCopy = { name: 'DUMMY', describe: accounting.describe }; // because a name property was added it will now point to a new object
 // accountingCopy.describe();
 
+const accounting = new AccountingDepartment('d2', []);
+accounting.addReports('Something went wrong...');
+accounting.printReports();

@@ -6,6 +6,7 @@ class Department {
         //name: string = 'DEFAULT';
         // public name: string; // public default
         this.employees = []; // only accessible inside class/object
+        // shortcut for initialization, a property is created and the value stored
         // this.id = id;
         // this.name = n;
     }
@@ -18,6 +19,7 @@ class Department {
     }
     addEmployee(employee) {
         // validation etc.
+        //this.id = 'd2';
         this.employees.push(employee);
     }
     printEmployeeInformation() {
@@ -25,15 +27,40 @@ class Department {
         console.log(this.employees.length);
     }
 }
-const accounting = new Department('d1', 'Accounting');
-accounting.addEmployee('Max');
-accounting.addEmployee('Menu');
+class ITDepartment extends Department {
+    constructor(id, admins) {
+        super(id, 'IT'); // base class constructor
+        this.admins = admins;
+        this.admins = admins; // has to be called after super
+    }
+}
+class AccountingDepartment extends Department {
+    constructor(id, reports) {
+        super(id, 'Accounting');
+        this.reports = reports;
+    }
+    addReports(text) {
+        this.reports.push(text);
+    }
+    printReports() {
+        console.log(this.reports);
+    }
+}
+// const accounting = new Department('d1', 'Accounting');
+//const accounting = new ITDepartment('d1', ['Max']);
+const it = new ITDepartment('d1', ['Max']);
+it.addEmployee('Max');
+it.addEmployee('Bob');
 //accounting.employees[2] = 'Joe'; // should not be able to directly assign, colleuge may assign this way/addEmployeee may need validation etc.
-accounting.describe();
-accounting.printEmployeeInformation();
+it.describe();
+it.printEmployeeInformation();
+console.log(it);
 //console.log(accounting);
 //const accountingCopy = { describe: accounting.describe };  // the object created is not based on the Departments class/any specific class
 // this is pointing at the describe function of accounting object, so the function itself is passed not the executing so no value is passed
 // const accountingCopy = { name: 'DUMMY', describe: accounting.describe }; // because a name property was added it will now point to a new object
 // accountingCopy.describe();
+const accounting = new AccountingDepartment('d2', []);
+accounting.addReports('Something went wrong...');
+accounting.printReports();
 //# sourceMappingURL=app.js.map
