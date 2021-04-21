@@ -1,14 +1,20 @@
 "use strict";
 class Department {
-    constructor(n) {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+        //name: string = 'DEFAULT';
+        // public name: string; // public default
         this.employees = []; // only accessible inside class/object
-        this.name = n;
+        // this.id = id;
+        // this.name = n;
     }
     //describe()
     //describe(this) {
     describe() {
         //console.log('Department: ' + name); // name is referring to a global name property
-        console.log('Department: ' + this.name); // "this" refers to the concrete instance when created. this. will access all properties and methods
+        //console.log('Department: ' + this.name); // "this" refers to the concrete instance when created. this. will access all properties and methods
+        console.log(`Department ${this.id}: ${this.name}`);
     }
     addEmployee(employee) {
         // validation etc.
@@ -19,7 +25,7 @@ class Department {
         console.log(this.employees.length);
     }
 }
-const accounting = new Department('Accounting');
+const accounting = new Department('d1', 'Accounting');
 accounting.addEmployee('Max');
 accounting.addEmployee('Menu');
 //accounting.employees[2] = 'Joe'; // should not be able to directly assign, colleuge may assign this way/addEmployeee may need validation etc.

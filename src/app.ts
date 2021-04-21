@@ -1,18 +1,19 @@
 class Department {
     //name: string = 'DEFAULT';
-    public name: string; // public default
+    // public name: string; // public default
     private employees: string[] = []; // only accessible inside class/object
 
-    constructor(n: string) {
-        this.name = n;
+    constructor(private id: string, private name: string) { // shortcut for initialization, a property is created and the value stored
+        // this.id = id;
+        // this.name = n;
     }
 
     //describe()
     //describe(this) {
     describe(this: Department) { // when executed means it must refer to an object of type Department/ instance of Department
         //console.log('Department: ' + name); // name is referring to a global name property
-        console.log('Department: ' + this.name); // "this" refers to the concrete instance when created. this. will access all properties and methods
-
+        //console.log('Department: ' + this.name); // "this" refers to the concrete instance when created. this. will access all properties and methods
+        console.log(`Department ${this.id}: ${this.name}`);
     }
 
     addEmployee(employee: string) {
@@ -27,7 +28,7 @@ class Department {
     }
 }
 
-const accounting = new Department('Accounting');
+const accounting = new Department('d1', 'Accounting');
 
 accounting.addEmployee('Max');
 accounting.addEmployee('Menu');
