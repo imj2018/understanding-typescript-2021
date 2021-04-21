@@ -7,7 +7,20 @@ class Department {
 
     }
 
+    //describe()
+    //describe(this) {
+    describe(this: Department) { // when executed means it must refer to an object of type Department/ instance of Department
+        //console.log('Department: ' + name); // name is referring to a global name property
+        console.log('Department: ' + this.name); // "this" refers to the concrete instance when created. this. will access all properties and methods
+
+    }
 }
 
 const accounting = new Department('Accounting');
-console.log(accounting);
+accounting.describe();
+//console.log(accounting);
+
+//const accountingCopy = { describe: accounting.describe };  // the object created is not based on the Departments class/any specific class
+// this is pointing at the describe function of accounting object, so the function itself is passed not the executing so no value is passed
+const accountingCopy = { name: 'DUMMY', describe: accounting.describe }; // because a name property was added it will now point to a new object
+accountingCopy.describe();
