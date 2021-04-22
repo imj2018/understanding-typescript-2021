@@ -10,6 +10,10 @@ class Department {
         // shortcut for initialization, a property is created and the value stored
         // this.id = id;
         // this.name = n;
+        //console.log(Department.fiscalYear); // static cannot be access with "this" inside a class but by using the class name 
+    }
+    static createEmployee(name) {
+        return { name: name };
     }
     //describe()
     //describe(this) {
@@ -28,6 +32,9 @@ class Department {
         console.log(this.employees.length);
     }
 }
+Department.fiscalYear = 2020;
+const employee1 = Department.createEmployee('Max'); // static stuff
+console.log(employee1, Department.fiscalYear);
 class ITDepartment extends Department {
     //public admins[];
     constructor(id, admins) {

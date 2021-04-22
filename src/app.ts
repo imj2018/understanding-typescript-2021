@@ -1,13 +1,20 @@
 class Department {
+    static fiscalYear: number = 2020
     //name: string = 'DEFAULT';
     // public name: string; // public default
     // private employees: string[] = []; // only accessible inside class/object
     protected employees: string[] = []; // can now access from child classes
 
+
     constructor(private readonly id: string, private name: string) { // readonly is typescript not js, you can no longer write to this property
         // shortcut for initialization, a property is created and the value stored
         // this.id = id;
         // this.name = n;
+        //console.log(Department.fiscalYear); // static cannot be access with "this" inside a class but by using the class name 
+    }
+
+    static createEmployee(name: string) { // static can be useful as a utility methods
+        return { name: name };
     }
 
     //describe()
@@ -29,8 +36,10 @@ class Department {
         console.log(this.employees.length);
 
     }
-
 }
+
+const employee1 = Department.createEmployee('Max'); // static stuff
+console.log(employee1, Department.fiscalYear);
 
 class ITDepartment extends Department { // base constructor will be called
     //public admins[];
