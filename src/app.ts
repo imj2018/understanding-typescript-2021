@@ -1,33 +1,19 @@
-class Department {
+abstract class Department { // abstract, so can no longer be instantiated/concrete
     static fiscalYear: number = 2020
-    //name: string = 'DEFAULT';
-    // public name: string; // public default
-    // private employees: string[] = []; // only accessible inside class/object
-    protected employees: string[] = []; // can now access from child classes
+
+    protected employees: string[] = [];
 
 
-    constructor(private readonly id: string, private name: string) { // readonly is typescript not js, you can no longer write to this property
-        // shortcut for initialization, a property is created and the value stored
-        // this.id = id;
-        // this.name = n;
-        //console.log(Department.fiscalYear); // static cannot be access with "this" inside a class but by using the class name 
+    constructor(protected readonly id: string, public name: string) {
     }
 
-    static createEmployee(name: string) { // static can be useful as a utility methods
+    static createEmployee(name: string) {
         return { name: name };
     }
 
-    //describe()
-    //describe(this) {
-    describe(this: Department) { // when executed means it must refer to an object of type Department/ instance of Department
-        //console.log('Department: ' + name); // name is referring to a global name property
-        //console.log('Department: ' + this.name); // "this" refers to the concrete instance when created. this. will access all properties and methods
-        console.log(`Department ${this.id}: ${this.name}`);
-    }
+    abstract describe(this: Department): void; // abstract should be used to force the concrete implementation to be used when a child of the base class, a general function/method may no be viable
 
     addEmployee(employee: string) {
-        // validation etc.
-        //this.id = 'd2';
         this.employees.push(employee);
     }
 
@@ -38,21 +24,29 @@ class Department {
     }
 }
 
-const employee1 = Department.createEmployee('Max'); // static stuff
+const employee1 = Department.createEmployee('Max');
 console.log(employee1, Department.fiscalYear);
 
-class ITDepartment extends Department { // base constructor will be called
-    //public admins[];
+class ITDepartment extends Department {
     constructor(id: string, public admins: string[]) {
-        super(id, 'IT'); // base class constructor
-        this.admins = admins; // has to be called after super
+        super(id, 'IT');
+        this.admins = admins;
+    }
+
+    describe() {
+        console.log(Department.fiscalYear);
     }
 }
 
 class AccountingDepartment extends Department {
     private lastReport: string;
 
-    get mostRecentReport() { // get so public now, cannot access directly but should contain more complex logic
+    constructor(id: string, public reports: string[]) {
+        super(id, 'Accounting');
+        this.lastReport = reports[0];
+    }
+
+    get mostRecentReport() {
         if (!this.lastReport) {
             throw new Error('No report found');
         }
@@ -63,12 +57,13 @@ class AccountingDepartment extends Department {
         if (!value) {
             throw new Error('Please pass a valid value');
         }
-        this.addReport('value'); // calling the addReport from this class
+        this.addReport('value');
     }
 
-    constructor(id: string, public reports: string[]) {
-        super(id, 'Accounting');
-        this.lastReport = reports[0];
+
+
+    describe() {
+        console.log('Accounting Department - ID: ' + this.id);
     }
 
     addEmployee(name: string) { // overriding base function
@@ -88,29 +83,24 @@ class AccountingDepartment extends Department {
     }
 }
 
-// const accounting = new Department('d1', 'Accounting');
-//const accounting = new ITDepartment('d1', ['Max']);
+
 const it = new ITDepartment('d1', ['Max']);
 
 it.addEmployee('Max');
 it.addEmployee('Bob');
 
-//accounting.employees[2] = 'Joe'; // should not be able to directly assign, colleuge may assign this way/addEmployeee may need validation etc.
+
 
 it.describe();
 it.printEmployeeInformation();
 console.log(it);
-//console.log(accounting);
 
-//const accountingCopy = { describe: accounting.describe };  // the object created is not based on the Departments class/any specific class
-// this is pointing at the describe function of accounting object, so the function itself is passed not the executing so no value is passed
-// const accountingCopy = { name: 'DUMMY', describe: accounting.describe }; // because a name property was added it will now point to a new object
-// accountingCopy.describe();
 
 const accounting = new AccountingDepartment('d2', []);
 accounting.mostRecentReport = 'You end report'; // set like a propert also using =
 console.log(accounting.mostRecentReport); // is accessed like a property, behind the scenes is a function 
 accounting.addReport('Something went wrong...');
+accounting.describe();
 accounting.addEmployee('Max');
 accounting.addEmployee('Manu');
 accounting.printReports();
