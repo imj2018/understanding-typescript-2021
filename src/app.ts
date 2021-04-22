@@ -29,6 +29,7 @@ class Department {
         console.log(this.employees.length);
 
     }
+
 }
 
 class ITDepartment extends Department { // base constructor will be called
@@ -40,8 +41,25 @@ class ITDepartment extends Department { // base constructor will be called
 }
 
 class AccountingDepartment extends Department {
+    private lastReport: string;
+
+    get mostRecentReport() { // get so public now, cannot access directly but should contain more complex logic
+        if (!this.lastReport) {
+            throw new Error('No report found');
+        }
+        return this.lastReport;
+    }
+
+    set mostRecentReport(value: string) {
+        if (!value) {
+            throw new Error('Please pass a valid value');
+        }
+        this.addReport('value'); // calling the addReport from this class
+    }
+
     constructor(id: string, public reports: string[]) {
         super(id, 'Accounting');
+        this.lastReport = reports[0];
     }
 
     addEmployee(name: string) { // overriding base function
@@ -51,15 +69,15 @@ class AccountingDepartment extends Department {
         this.employees.push(name); // if private cannot push/add to inherited classes
     }
 
-    addReports(text: string) {
+    addReport(text: string) {
         this.reports.push(text);
+        this.lastReport = text;
     }
 
     printReports() {
         console.log(this.reports)
     }
 }
-
 
 // const accounting = new Department('d1', 'Accounting');
 //const accounting = new ITDepartment('d1', ['Max']);
@@ -81,7 +99,9 @@ console.log(it);
 // accountingCopy.describe();
 
 const accounting = new AccountingDepartment('d2', []);
-accounting.addReports('Something went wrong...');
+accounting.mostRecentReport = 'You end report'; // set like a propert also using =
+console.log(accounting.mostRecentReport); // is accessed like a property, behind the scenes is a function 
+accounting.addReport('Something went wrong...');
 accounting.addEmployee('Max');
 accounting.addEmployee('Manu');
 accounting.printReports();

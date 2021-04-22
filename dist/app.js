@@ -40,6 +40,19 @@ class AccountingDepartment extends Department {
     constructor(id, reports) {
         super(id, 'Accounting');
         this.reports = reports;
+        this.lastReport = reports[0];
+    }
+    get mostRecentReport() {
+        if (!this.lastReport) {
+            throw new Error('No report found');
+        }
+        return this.lastReport;
+    }
+    set mostRecentReport(value) {
+        if (!value) {
+            throw new Error('Please pass a valid value');
+        }
+        this.addReport('value'); // calling the addReport from this class
     }
     addEmployee(name) {
         if (name === 'Max') {
@@ -47,8 +60,9 @@ class AccountingDepartment extends Department {
         }
         this.employees.push(name); // if private cannot push/add to inherited classes
     }
-    addReports(text) {
+    addReport(text) {
         this.reports.push(text);
+        this.lastReport = text;
     }
     printReports() {
         console.log(this.reports);
@@ -69,7 +83,9 @@ console.log(it);
 // const accountingCopy = { name: 'DUMMY', describe: accounting.describe }; // because a name property was added it will now point to a new object
 // accountingCopy.describe();
 const accounting = new AccountingDepartment('d2', []);
-accounting.addReports('Something went wrong...');
+accounting.mostRecentReport = 'You end report'; // set like a propert also using =
+console.log(accounting.mostRecentReport); // is accessed like a property, behind the scenes is a function 
+accounting.addReport('Something went wrong...');
 accounting.addEmployee('Max');
 accounting.addEmployee('Manu');
 accounting.printReports();
