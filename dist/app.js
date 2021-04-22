@@ -5,7 +5,8 @@ class Department {
         this.name = name;
         //name: string = 'DEFAULT';
         // public name: string; // public default
-        this.employees = []; // only accessible inside class/object
+        // private employees: string[] = []; // only accessible inside class/object
+        this.employees = []; // can now access from child classes
         // shortcut for initialization, a property is created and the value stored
         // this.id = id;
         // this.name = n;
@@ -28,6 +29,7 @@ class Department {
     }
 }
 class ITDepartment extends Department {
+    //public admins[];
     constructor(id, admins) {
         super(id, 'IT'); // base class constructor
         this.admins = admins;
@@ -38,6 +40,12 @@ class AccountingDepartment extends Department {
     constructor(id, reports) {
         super(id, 'Accounting');
         this.reports = reports;
+    }
+    addEmployee(name) {
+        if (name === 'Max') {
+            return;
+        }
+        this.employees.push(name); // if private cannot push/add to inherited classes
     }
     addReports(text) {
         this.reports.push(text);
@@ -62,5 +70,8 @@ console.log(it);
 // accountingCopy.describe();
 const accounting = new AccountingDepartment('d2', []);
 accounting.addReports('Something went wrong...');
+accounting.addEmployee('Max');
+accounting.addEmployee('Manu');
 accounting.printReports();
+accounting.printEmployeeInformation();
 //# sourceMappingURL=app.js.map

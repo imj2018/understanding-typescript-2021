@@ -1,7 +1,8 @@
 class Department {
     //name: string = 'DEFAULT';
     // public name: string; // public default
-    private employees: string[] = []; // only accessible inside class/object
+    // private employees: string[] = []; // only accessible inside class/object
+    protected employees: string[] = []; // can now access from child classes
 
     constructor(private readonly id: string, private name: string) { // readonly is typescript not js, you can no longer write to this property
         // shortcut for initialization, a property is created and the value stored
@@ -31,7 +32,7 @@ class Department {
 }
 
 class ITDepartment extends Department { // base constructor will be called
-    public admins[];
+    //public admins[];
     constructor(id: string, public admins: string[]) {
         super(id, 'IT'); // base class constructor
         this.admins = admins; // has to be called after super
@@ -41,6 +42,13 @@ class ITDepartment extends Department { // base constructor will be called
 class AccountingDepartment extends Department {
     constructor(id: string, public reports: string[]) {
         super(id, 'Accounting');
+    }
+
+    addEmployee(name: string) { // overriding base function
+        if (name === 'Max') {
+            return;
+        }
+        this.employees.push(name); // if private cannot push/add to inherited classes
     }
 
     addReports(text: string) {
@@ -74,4 +82,8 @@ console.log(it);
 
 const accounting = new AccountingDepartment('d2', []);
 accounting.addReports('Something went wrong...');
+accounting.addEmployee('Max');
+accounting.addEmployee('Manu');
 accounting.printReports();
+accounting.printEmployeeInformation();
+
