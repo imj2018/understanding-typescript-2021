@@ -35,6 +35,13 @@ class AccountingDepartment extends Department {
         this.reports = reports;
         this.lastReport = reports[0];
     }
+    static getInstance() {
+        if (AccountingDepartment.instance) { // return the instance that alreadt exists
+            return this.instance; // "this" is related to the class not a created instance
+        }
+        this.instance = new AccountingDepartment('d2', []); // or create a new instance 
+        return this.instance;
+    }
     get mostRecentReport() {
         if (!this.lastReport) {
             throw new Error('No report found');
@@ -70,7 +77,10 @@ it.addEmployee('Bob');
 it.describe();
 it.printEmployeeInformation();
 console.log(it);
-const accounting = new AccountingDepartment('d2', []);
+// const accounting = new AccountingDepartment();
+const accounting = AccountingDepartment.getInstance();
+const accounting2 = AccountingDepartment.getInstance();
+console.log(accounting, accounting2); // there will only be one instance given the singleton pattern
 accounting.mostRecentReport = 'You end report'; // set like a propert also using =
 console.log(accounting.mostRecentReport); // is accessed like a property, behind the scenes is a function 
 accounting.addReport('Something went wrong...');

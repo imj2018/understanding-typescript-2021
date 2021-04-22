@@ -40,10 +40,20 @@ class ITDepartment extends Department {
 
 class AccountingDepartment extends Department {
     private lastReport: string;
+    private static instance: AccountingDepartment;
 
-    constructor(id: string, public reports: string[]) {
+    private constructor(id: string, public reports: string[]) { // private constructor (can no longer call new) for the singleton pattern, static methods/properties can't be used, only one instance can exist (not multiple objects of the class)
         super(id, 'Accounting');
         this.lastReport = reports[0];
+    }
+
+    static getInstance() {
+        if (AccountingDepartment.instance) { // return the instance that alreadt exists
+            return this.instance // "this" is related to the class not a created instance
+        }
+        this.instance = new AccountingDepartment('d2', []); // or create a new instance 
+        return this.instance;
+
     }
 
     get mostRecentReport() {
@@ -59,8 +69,6 @@ class AccountingDepartment extends Department {
         }
         this.addReport('value');
     }
-
-
 
     describe() {
         console.log('Accounting Department - ID: ' + this.id);
@@ -88,15 +96,16 @@ const it = new ITDepartment('d1', ['Max']);
 
 it.addEmployee('Max');
 it.addEmployee('Bob');
-
-
-
 it.describe();
 it.printEmployeeInformation();
 console.log(it);
 
+// const accounting = new AccountingDepartment();
+const accounting = AccountingDepartment.getInstance();
+const accounting2 = AccountingDepartment.getInstance();
 
-const accounting = new AccountingDepartment('d2', []);
+console.log(accounting, accounting2); // there will only be one instance given the singleton pattern
+
 accounting.mostRecentReport = 'You end report'; // set like a propert also using =
 console.log(accounting.mostRecentReport); // is accessed like a property, behind the scenes is a function 
 accounting.addReport('Something went wrong...');
