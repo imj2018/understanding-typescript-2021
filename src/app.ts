@@ -1,19 +1,29 @@
-interface Person { // not a blueprint but as a custom type
-    //name: string = 'Max'; // no concrete values
+//interface Person { // not a blueprint but as a custom type
+//type Person = { // a type is very similar and can use union types, but an interface is more clear and seen alot more
+//interface Person {
+interface Greetable { // everyclass that adheres to this interface, they are forced to use the properties and methods
+    // unlike abstract which can mix between concrete and abstract
     name: string;
-    age: number;
 
     greet(phrase: string): void;
 }
 
-let user1: Person;
+class Person implements Greetable { // adheres to Greetable, unlike inheritance multiple interfaces can be used
+    name: string;
+    age = 30;
+    constructor(n: string) {
+        this.name = n;
+    }
 
-user1 = { // an object
-    name: 'Max', // add the concrete value, seperate by , 
-    age: 1,
     greet(phrase: string) {
         console.log(phrase + ' ' + this.name);
     }
-};
+}
 
-user1.greet('Hi there I am');
+//let user1: Person;
+let user1: Greetable; // the interface can be used as a type stored in user1 as Person is based on Greetable
+
+user1 = new Person('Max');
+
+user1.greet('Hi there - I am');
+console.log(user1)
