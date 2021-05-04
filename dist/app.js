@@ -1,29 +1,15 @@
 "use strict";
-let add; // a new function of type Addfn
-add = (n1, n2) => {
-    return n1 + n2;
+//interface ElevatedEmployee extends Employee, Admin {
+// name: string;
+// privileges: string[];
+// startDate: Date;
+// }
+const el = {
+    name: 'Max',
+    privileges: ['create-server', 'new'],
+    startDate: new Date()
 };
-class Person {
-    //outputName = '...';
-    constructor(n) {
-        this.age = 30;
-        //constructor(n: string = ' ')
-        //this.name = n; // if none optional should be initialized
-        if (n) { // if n is set
-            this.name = n;
-        }
-    }
-    greet(phrase) {
-        if (this.name) {
-            console.log(phrase + ' ' + this.name);
-        }
-        else {
-            console.log('Hi');
-        }
-    }
-}
-let user1;
-user1 = new Person('');
-user1.greet('Hi there - I am');
-console.log(user1);
+console.log(...el.privileges);
+const number = 10;
+console.log(number);
 //# sourceMappingURL=app.js.map

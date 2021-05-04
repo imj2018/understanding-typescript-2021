@@ -1,48 +1,34 @@
-// type AddFn = () => number; // type is a function with a function definition that returns a number
-//type AddFn = (a: number, b: number) => number;
-interface AddFn { // an interface can be used as an alternative to custom types, function types are just objects therefore function types can be created with interfaces
-    (a: number, b: number): number; // there is an anonymous function in Addfn
-}
 
-let add: AddFn; // a new function of type Addfn
-
-add = (n1: number, n2: number) => {
-    return n1 + n2;
+type Admin = {
+    //interface Admin {
+    name: string;
+    privileges: string[];
 };
 
-interface Named {
-    readonly name?: string;
-    outputName?: string; // optional property
+type Employee = {
+    //interface Employee {
+    name: string;
+    startDate: Date;
 }
 
-interface Greetable extends Named {
-    greet(phrase: string): void;
-}
+type ElevatedEmployee = Admin & Employee; // intersection, closely related to interface inheritance
+//interface ElevatedEmployee extends Employee, Admin {
+// name: string;
+// privileges: string[];
+// startDate: Date;
+// }
 
-class Person implements Greetable {
-    name?: string;
-    age = 30;
-    //outputName = '...';
-    constructor(n?: string) { // optional parameter, either set a default value or ? for undefined 
-        //constructor(n: string = ' ')
-        //this.name = n; // if none optional should be initialized
-        if (n) { // if n is set
-            this.name = n;
-        }
-    }
+const el: ElevatedEmployee = {
+    name: 'Max',
+    privileges: ['create-server', 'new'],
+    startDate: new Date()
+};
 
-    greet(phrase: string) {
-        if (this.name) {
-            console.log(phrase + ' ' + this.name);
-        } else {
-            console.log('Hi');
-        }
+type Combinable = string | number; // can be used on non object types union type
+type Numeric = number | boolean;
 
-    }
-}
+type Universal = Combinable & Numeric; // 
 
-
-let user1: Greetable;
-user1 = new Person('');
-user1.greet('Hi there - I am');
-console.log(user1)
+console.log(...el.privileges);
+const number: Universal = 10;
+console.log(number)
