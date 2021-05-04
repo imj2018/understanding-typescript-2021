@@ -1,15 +1,26 @@
+// type AddFn = () => number; // type is a function with a function definition that returns a number
+//type AddFn = (a: number, b: number) => number;
+interface AddFn { // an interface can be used as an alternative to custom types, function types are just objects therefore function types can be created with interfaces
+    (a: number, b: number): number; // there is an anonymous function in Addfn
+}
+
+let add: AddFn; // a new function of type Addfn
+
+add = (n1: number, n2: number) => {
+    return n1 + n2;
+};
+
+
 interface Named {
     readonly name: string;
 }
 
-interface Greetable extends Named { // a way of combining or splitting interfaces e.g maybe an objects needs Named and no greet method
-    // another interface could be added e.g extends Named, AnotherInterface
+interface Greetable extends Named {
     greet(phrase: string): void;
 }
 
-class Person implements Greetable, Named {
-    //class Person implements Greetable, Named { 
-    name: string; // remove name will cause an error as name is needed
+class Person implements Greetable {
+    name: string;
     age = 30;
     constructor(n: string) {
         this.name = n;
