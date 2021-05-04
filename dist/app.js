@@ -4,16 +4,26 @@ add = (n1, n2) => {
     return n1 + n2;
 };
 class Person {
+    //outputName = '...';
     constructor(n) {
         this.age = 30;
-        this.name = n;
+        //constructor(n: string = ' ')
+        //this.name = n; // if none optional should be initialized
+        if (n) { // if n is set
+            this.name = n;
+        }
     }
     greet(phrase) {
-        console.log(phrase + ' ' + this.name);
+        if (this.name) {
+            console.log(phrase + ' ' + this.name);
+        }
+        else {
+            console.log('Hi');
+        }
     }
 }
 let user1;
-user1 = new Person('Max');
+user1 = new Person('');
 user1.greet('Hi there - I am');
 console.log(user1);
 //# sourceMappingURL=app.js.map
