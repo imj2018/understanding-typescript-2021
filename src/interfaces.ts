@@ -4,11 +4,11 @@ interface AddFn { // an interface can be used as an alternative to custom types,
     (a: number, b: number): number; // there is an anonymous function in Addfn
 }
 
-let add: AddFn; // a new function of type Addfn
+// let add: AddFn; // a new function of type Addfn
 
-add = (n1: number, n2: number) => {
-    return n1 + n2;
-};
+// add = (n1: number, n2: number) => {
+//     return n1 + n2;
+// };
 
 interface Named {
     readonly name?: string;

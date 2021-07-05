@@ -1,8 +1,4 @@
 "use strict";
-let add; // a new function of type Addfn
-add = (n1, n2) => {
-    return n1 + n2;
-};
 class Person {
     //outputName = '...';
     constructor(n) {
