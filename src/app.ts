@@ -21,6 +21,7 @@ if (age > 20) {
 
 //console.log(isOld);
 
+// arrow functions
 const addNumbersNormal = function (a: number, b: number ) {
     return a + b;
 }
@@ -34,7 +35,8 @@ const addNumbersArrowOneLine = (a: number, b: number) => a + b;
 console.log("using arrow function " + addNumbersArrow(2,5));
 
 //const printOutputOneParameter = (output: string | number) => console.log(output);
-const printOutputOneParameter: (a: number | string) => void = output => console.log(output);
+const printOutputOneParameter: (a: number | string) => 
+void = output => console.log(output);
 
 printOutputOneParameter("print with one parameter " + 10);
 printOutputOneParameter(addNumbersArrow(5,2));
@@ -46,6 +48,46 @@ if (button) {
     button.addEventListener('click', (event) => {console.log(event)});
 }
 
+const addNumbersDefault = (a: number, b: number = 1 ) => a + b; 
+printOutputOneParameter("default parameter must come last " + addNumbersDefault(5));
+
+// spread
+const hobbies = ['sports', 'cooking'];
+const activeHobbiesSpread = ['hiking', ...hobbies];
+
+activeHobbiesSpread.push(...hobbies); 
+
+console.log("spread, pull out all elements of array")
+activeHobbiesSpread.forEach(element => {
+    console.log(element)
+});
+
+const person = {
+    firstName: 'Max',
+    userAge: 30
+};
+
+// rest
+const pointer = person;
+const copiedPersonPullAsKeyValuePairFromObject = { ...person};
+
+// const addMany = (a,b,c,d) => {
+// const addTupleOfThreeNumbers = (...numbers: [number, number, number]) => {
+const addManyNumbers = (...numbers: number[]) => {
+    //let result = 0;
+    return numbers.reduce((currentResult, currentValue) => {
+        return currentResult + currentValue; }, 0) 
+    };
+
+const AddedNumbers = addManyNumbers(5, 10, 12, 11.7);
+console.log("rest parameters, merged into an array " + AddedNumbers);
+
+// destructure
+const [hobby1, hobby2, ...remaningHobbiesMergedToNewArray] = hobbies; // not affected
+console.log(hobbies)
+
+const {firstName: aliasName, userAge: aliasAge } = person;
+console.log(aliasName, aliasName, person)
 
 
 

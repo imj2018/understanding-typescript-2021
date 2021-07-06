@@ -15,6 +15,7 @@ if (age > 20) {
     //let isOld = true;
 }
 //console.log(isOld);
+// arrow functions
 const addNumbersNormal = function (a, b) {
     return a + b;
 };
@@ -31,6 +32,38 @@ const button = document.querySelector('button');
 if (button) {
     button.addEventListener('click', (event) => { console.log(event); });
 }
+const addNumbersDefault = (a, b = 1) => a + b;
+printOutputOneParameter("default parameter must come last " + addNumbersDefault(5));
+// spread
+const hobbies = ['sports', 'cooking'];
+const activeHobbiesSpread = ['hiking', ...hobbies];
+activeHobbiesSpread.push(...hobbies);
+console.log("spread, pull out all elements of array");
+activeHobbiesSpread.forEach(element => {
+    console.log(element);
+});
+const person = {
+    firstName: 'Max',
+    userAge: 30
+};
+// rest
+const pointer = person;
+const copiedPersonPullAsKeyValuePairFromObject = Object.assign({}, person);
+// const addMany = (a,b,c,d) => {
+// const addTupleOfThreeNumbers = (...numbers: [number, number, number]) => {
+const addManyNumbers = (...numbers) => {
+    //let result = 0;
+    return numbers.reduce((currentResult, currentValue) => {
+        return currentResult + currentValue;
+    }, 0);
+};
+const AddedNumbers = addManyNumbers(5, 10, 12, 11.7);
+console.log("rest parameters, merged into an array " + AddedNumbers);
+// destructure
+const [hobby1, hobby2, ...remaningHobbiesMergedToNewArray] = hobbies; // not affected
+console.log(hobbies);
+const { firstName: aliasName, userAge: aliasAge } = person;
+console.log(aliasName, aliasName, person);
 //interface ElevatedEmployee extends Employee, Admin {
 // name: string;
 // privileges: string[];
