@@ -1,5 +1,5 @@
-//type Person = {
-interface Greetable {
+// share and ensure the implementing class uses the functionality
+interface Greetable { 
     
     // C# interfaces can't have fields/properties
     // "inteface has no implementation details at all, abstract can have a mixture of override parts,
@@ -8,12 +8,7 @@ interface Greetable {
     greet(phrase: string): string;
 }
 
-interface AnotherInterface {
-    //
-}
-
-
-class Person implements Greetable, AnotherInterface {
+class Person implements Greetable {
 
     name: string;
     age = 30;
@@ -28,26 +23,13 @@ class Person implements Greetable, AnotherInterface {
 
 }
 
-let user1: Greetable; 
-user1 = new Person('Max');
+// set to type Greetable, it doesn't matter what is in user it just 
+// has to implement a greet method. we don't need to know anything about the object
+// or class i.e it doesn't matter if Person has anything else so long as it 
+// has a greet method
+let user: Greetable; 
 
-// user1 = {
-//     name: 'george',
-//     age: 4, 
-//     greet(phrase:string): void {
-//         console.log('Hi ' + phrase + this.name);
-//     }
-// };
+user = new Person('John');
 
-console.log(user1.greet('my cat '));
-console.log(user1);
-
-
-let stuff: string[] = [];
-let thing = { 
-    name : '',
-    age : 10000000,
-    location : '',
-    shape : 'rectangular prism',
-    inStuff: stuff[0] 
-}
+console.log(user.greet('my cat '));
+console.log(user);

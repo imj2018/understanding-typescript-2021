@@ -8,23 +8,12 @@ class Person {
         return "Hello my cat" + phrase;
     }
 }
-let user1;
-user1 = new Person('Max');
-// user1 = {
-//     name: 'george',
-//     age: 4, 
-//     greet(phrase:string): void {
-//         console.log('Hi ' + phrase + this.name);
-//     }
-// };
-console.log(user1.greet('my cat '));
-console.log(user1);
-let stuff = [];
-let thing = {
-    name: '',
-    age: 10000000,
-    location: '',
-    shape: 'rectangular prism',
-    inStuff: stuff[0]
-};
+// set to type Greetable, it doesn't matter what is in user it just 
+// has to implement a greet method. we don't need to know anything about the object
+// or class i.e it doesn't matter if Person has anything else so long as it 
+// has a greet method
+let user;
+user = new Person('John');
+console.log(user.greet('my cat '));
+console.log(user);
 //# sourceMappingURL=app.js.map
