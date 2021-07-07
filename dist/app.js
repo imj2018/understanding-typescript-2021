@@ -1,19 +1,32 @@
 "use strict";
+let addAsWhatever;
+addAsWhatever = (a, b) => {
+    return a + b;
+};
+// class Person implements Greetable, Named {
 class Person {
+    // can also have optional parameters for constructor or 
+    // set a default value name = "whatever", or any methods
     constructor(name) {
+        this.outPutName = "whatever";
         this.age = 30;
-        this.name = name;
+        if (name) {
+            this.name = name;
+        }
     }
     greet(phrase) {
-        return "Hello my cat" + phrase;
+        if (this.name) {
+            return "Hello my cat " + phrase;
+        }
+        else {
+            throw new Error("No name found");
+        }
     }
 }
-// set to type Greetable, it doesn't matter what is in user it just 
-// has to implement a greet method. we don't need to know anything about the object
-// or class i.e it doesn't matter if Person has anything else so long as it 
-// has a greet method
 let user;
-user = new Person('John');
-console.log(user.greet('my cat '));
+//user = new Person('george');
+user = new Person('george');
+//user1.name = "won't work"
+console.log(user.greet('george'));
 console.log(user);
 //# sourceMappingURL=app.js.map
