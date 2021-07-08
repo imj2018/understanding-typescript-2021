@@ -65,7 +65,7 @@ function printEmployeeInformation(emp: UnknownEmployee) {
 printEmployeeInformation(el);
 
 // can create object directly
-printEmployeeInformation({ name: 'george', startDate: new Date() }); 
+printEmployeeInformation({ name: 'george', startDate: new Date() });
 
 
 class Car {
@@ -94,7 +94,7 @@ function useVehicle(vehicle: Vehicle) {
     //if('loadCargo' in vehicle)
     // javascript to check at runtime (not typescript) based on 
     // the Truck constructor function, can't use interfaces  
-    if(vehicle instanceof Truck) {
+    if (vehicle instanceof Truck) {
         vehicle.loadCargo(10);
     }
 }
@@ -102,5 +102,32 @@ function useVehicle(vehicle: Vehicle) {
 useVehicle(v1);
 useVehicle(v2);
 
+interface Bird {
+    species: "bird", // this is a literal type (type assignemnt) 
+    flyingSpeed: number;
+}
 
+interface Horse {
+    species: 'horse',
+    runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+function moveAnimal(animal: Animal) {
+    let speed;
+    //if ('flyingSpeed' in animal) {
+    //console.log('Moving with speed: ' + animal.flyingSpeed);
+    switch (animal.species) {
+        case 'bird':
+            speed = animal.flyingSpeed;
+            break;
+        case 'horse':
+            speed = animal.runningSpeed;
+
+    }
+    console.log('Moving at speed: ' + speed);
+}
+
+moveAnimal({species : 'bird', flyingSpeed : 10 });
 
