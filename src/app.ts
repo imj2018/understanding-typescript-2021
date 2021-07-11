@@ -80,7 +80,7 @@ class Truck {
     }
 
     loadCargo(amount: number) {
-        console.log('Loading cargo ...  + amount');
+        console.log('Loading cargo ...'  + amount);
     }
 }
 
@@ -130,4 +130,15 @@ function moveAnimal(animal: Animal) {
 }
 
 moveAnimal({species : 'bird', flyingSpeed : 10 });
+
+// const userInputElement = <HTMLInputElement>document.getElementById('message-output')!;
+const userInputElement = document.getElementById('message-output')! as HTMLInputElement;
+
+//const userInputElement = document.getElementById('message-output')
+
+// if (userInputElement){
+//     (userInputElement as HTMLInputElement).value = "Hi There!";
+// }
+
+userInputElement.value = "Hi There!";
 
