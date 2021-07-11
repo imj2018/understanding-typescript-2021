@@ -79,4 +79,12 @@ const userInputElement = document.getElementById('message-output');
 //     (userInputElement as HTMLInputElement).value = "Hi There!";
 // }
 userInputElement.value = "Hi There!";
+;
+const errorBag = {
+    // 1 (a number can be a valid key type)
+    1: 'string',
+    email: 'Not a valid email!',
+    username: 'Must start with a character'
+};
+console.log(errorBag.email);
 //# sourceMappingURL=app.js.map

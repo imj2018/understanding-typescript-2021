@@ -142,3 +142,25 @@ const userInputElement = document.getElementById('message-output')! as HTMLInput
 
 userInputElement.value = "Hi There!";
 
+
+
+
+interface ErrorContrainer { 
+    // { email: ' Note a valid email', username: 'Must start with a character'}
+    
+    // must have properties that are strings, and value returned must be string
+    [prop:string] :string;
+    //[prop: number]
+    // won't work
+    //id: number;
+};
+
+const errorBag: ErrorContrainer = {
+    // 1 (a number can be a valid key type)
+    1: 'string', 
+    email: 'Not a valid email!',
+    username: 'Must start with a character'
+
+};
+
+console.log(errorBag.email);
