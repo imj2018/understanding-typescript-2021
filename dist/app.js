@@ -35,6 +35,13 @@ console.log(fetchedUserData.job);
 // if job is defined
 // this is a safe was to access nested properties or objects
 console.log((_a = fetchedUserData === null || fetchedUserData === void 0 ? void 0 : fetchedUserData.job) === null || _a === void 0 ? void 0 : _a.title);
+//const userInput = null;
+const userInput = '';
+// if null store a 'DEFAULT' but also falls back for empty strings ' '
+// const storedData = userInput || 'DEFAULT';
+// nullish coalescing operator, if it really is null or undefined it will use 'DEFAULT'
+const storedData = userInput !== null && userInput !== void 0 ? userInput : 'DEFAULT';
+console.log(storedData);
 // type UnknownEmployee = Employee | Admin;
 // // both have name propert not priviliges
 // function printEmployeeInformation(emp: UnknownEmployee) {
