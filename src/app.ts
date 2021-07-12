@@ -79,3 +79,22 @@ function countAndDescribe<T extends Lengthy>(element: T):
 console.log(countAndDescribe([]));
 
 
+// an error is thrown, it is uncertain whether the object returned will 
+// be a key
+// we want U to be a property of T i.e U extends keyof T
+// first parameter is any kind of object T and second parameter
+// is any kind of key in that object U i.e obj:T, key: U
+function extractAndConvert<T extends object, U extends keyof T>(
+    obj: T,
+    key: U
+)
+{
+    return 'Value: ' + obj[key];
+}
+
+// a name key/propery is required
+// won't work, must denote the name property
+// extractAndConvert( { name:'Max' }, 'age');
+extractAndConvert( { name:'Max' }, 'name');
+
+
