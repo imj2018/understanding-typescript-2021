@@ -1,4 +1,5 @@
 "use strict";
+var _a;
 ;
 ;
 const el = {
@@ -22,6 +23,18 @@ function add(a, b) {
 // you can type cast i.e const result = add('Max', 'Schwarz') as string but not optimal
 const result = add('Max', 'Schwarz');
 result.split('');
+const fetchedUserData = {
+    id: 'ul',
+    userName: 'Max',
+    job: { title: 'CEO', description: 'My own company' }
+};
+console.log(fetchedUserData.job);
+// js way yo check if an object exists
+//console.log(fetchedUserData.job.title & fetchedUserData.job.title);
+// if fetchedUserData is defined (using the?) access job, then only access title
+// if job is defined
+// this is a safe was to access nested properties or objects
+console.log((_a = fetchedUserData === null || fetchedUserData === void 0 ? void 0 : fetchedUserData.job) === null || _a === void 0 ? void 0 : _a.title);
 // type UnknownEmployee = Employee | Admin;
 // // both have name propert not priviliges
 // function printEmployeeInformation(emp: UnknownEmployee) {

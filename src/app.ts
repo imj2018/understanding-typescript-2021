@@ -64,6 +64,27 @@ const result = add('Max', 'Schwarz');
 result.split('');
 
 
+
+
+const fetchedUserData = {
+    id: 'ul',
+    userName: 'Max',
+    job: { title: 'CEO', description: 'My own company' }
+
+};
+
+
+console.log(fetchedUserData.job);
+// js way yo check if an object exists
+//console.log(fetchedUserData.job.title & fetchedUserData.job.title);
+
+// if fetchedUserData is defined (using the?) access job, then only access title
+// if job is defined
+// this is a safe was to access nested properties or objects
+console.log(fetchedUserData?.job?.title);
+
+
+
 // type UnknownEmployee = Employee | Admin;
 
 // // both have name propert not priviliges
