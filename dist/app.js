@@ -42,4 +42,19 @@ const mergedObj = merge(
 //     { age: 30, terminal: 'yes' }
 // );
 console.log(mergedObj);
+// must implement length property, just to specific for the return type
+// return a generic object and a string 
+function countAndDescribe(element) {
+    let description = 'Got no value.';
+    if (element.length === 1) {
+        description = 'Got 1 element.';
+    }
+    else if (element.length > 1) {
+        description = 'Got ' + element.length + ' elements.';
+    }
+    return [element, description];
+}
+// console.log(countAndDescribe('Hi there!'));
+// console.log(countAndDescribe(['Sports', 'Cooking']));
+console.log(countAndDescribe([]));
 //# sourceMappingURL=app.js.map

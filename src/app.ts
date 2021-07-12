@@ -56,3 +56,26 @@ const mergedObj = merge(
 
 console.log(mergedObj);
 
+interface Lengthy {
+    length : number
+}
+
+// must implement length property, just to specific for the return type
+// return a generic object and a string 
+function countAndDescribe<T extends Lengthy>(element: T): 
+[T, string]  {
+    let description = 'Got no value.';
+    if (element.length === 1) {
+        description = 'Got 1 element.';
+    }
+    else if (element.length > 1 ) {
+        description = 'Got ' + element.length + ' elements.';
+    }
+    return[element, description];
+}
+
+// console.log(countAndDescribe('Hi there!'));
+// console.log(countAndDescribe(['Sports', 'Cooking']));
+console.log(countAndDescribe([]));
+
+
