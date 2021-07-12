@@ -20,6 +20,8 @@
 // return intersected data
 // we don't care about the type, it's just the most likely objA is 
 // different to objB
+// constraints for T and U, an object must be passed
+// function merge<T extends object, U extends object>(objA: T, objB: U) {
 function merge(objA, objB) {
     return Object.assign(objA, objB);
 }
@@ -28,9 +30,16 @@ function merge(objA, objB) {
 //{name: 'Max'}, 
 // object 2
 // {age: 30} ) as {name: string, age: number};
-const mergedObj = merge({ name: 'Max', hobbies: ['Sports', 'tree'] }, { age: 30 });
+const mergedObj = merge(
+// { name: 'Max', hobbies: ['Sports', 'tree']}, 30 );
+//{ name: 'Max', hobbies: ['Sports', 'tree']}, { age: 30});
+{ name: 'Max', hobbies: ['Sports', 'tree'] }, 30);
 // specific but typescript already infers the types
-const mergedObj2 = merge({ name: 'Max', hobbies: ['Sports', 'plant'] }, { age: 30, terminal: 'yes' });
-console.log(mergedObj.age);
-console.log(mergedObj2.hobbies[1]);
+// const mergedObj2 = merge<
+// {name:string, hobbies: string[]},
+// {age: number, terminal: string}>(
+//     { name: 'Max', hobbies: ['Sports', 'plant'] },
+//     { age: 30, terminal: 'yes' }
+// );
+console.log(mergedObj);
 //# sourceMappingURL=app.js.map
