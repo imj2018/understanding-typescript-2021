@@ -167,3 +167,34 @@ console.log(textStorageBoth.getItems());
 
 
 
+interface CourseGoal {
+    title: string;
+    description: string;
+    completeUntil: Date;
+
+}
+
+// function createCourseGoal(title:string, description:string, date: Date) {
+//     return {
+//         title: title, 
+//         description: description, 
+//         completeUntil: date
+//     }
+// }
+
+function createCourseGoal(
+    title:string, 
+    description:string,
+    date: Date): CourseGoal {
+        // Partial changes all properties to optional 
+        let courseGoal: Partial<CourseGoal> = {};
+        courseGoal.title = title ;
+        courseGoal.description = description;
+        courseGoal.completeUntil = date;
+        return courseGoal as CourseGoal;
+    }
+
+    // will not be able to call things on array
+    const names: Readonly<string[]> = ['Max', 'Joe'];
+    // name.push('Manu');
+    // name.pop();

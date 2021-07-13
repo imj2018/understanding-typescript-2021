@@ -109,16 +109,23 @@ textStorageBoth.addItem('John');
 textStorageBoth.addItem(4);
 textStorageBoth.removeItem(4);
 console.log(textStorageBoth.getItems());
-// const textStorageObjects = new DataStorage<object>();
-// // need to pass actual object 
-// const johnObj = {name: 'John'}
-// textStorageObjects.addItem({name: 'John', age: 50});
-// textStorageObjects.addItem({name: 'Frank', age: 20});
-// textStorageObjects.addItem({name: 'George', age: 20});
-// // attempt to remove John (first object) is referencing, 
-// // indexOf(item) is actually passes a new object, javascript will
-// // not be able to find the element and remove the last element -1
-// // textStorageObjects.removeItem({name: 'John'});
-// textStorageObjects.removeItem(johnObj);
-// console.log(textStorageObjects.getItems());
+// function createCourseGoal(title:string, description:string, date: Date) {
+//     return {
+//         title: title, 
+//         description: description, 
+//         completeUntil: date
+//     }
+// }
+function createCourseGoal(title, description, date) {
+    // Partial changes all properties to optional 
+    let courseGoal = {};
+    courseGoal.title = title;
+    courseGoal.description = description;
+    courseGoal.completeUntil = date;
+    return courseGoal;
+}
+// will not be able to call things on array
+const names = ['Max', 'Joe'];
+// name.push('Manu');
+// name.pop();
 //# sourceMappingURL=app.js.map
