@@ -74,14 +74,25 @@ extractAndConvert({ name: 'Max' }, 'name');
 class DataStorage {
     constructor() {
         //class DataStorage<T> {
+        //class DataStorage {
+        // this says stings numbers and booleans can be mixed into the array
+        //private data: (string | number | boolean)[]= [];
+        // this says either but, for the following methods it is accepting any 
+        // of the types/ free to use any which should not be allowed,
+        // for generics you only choose once i.e DataStorage<T extends string | number | boolean>
+        // generics types lock in a type, union is for flexibility/different type for every 
+        // method call 
+        //private data: (string[] | number[] | boolean[])[]= [];
         this.data = [];
     }
+    // addItem(item: string | number | boolean) {
     addItem(item) {
         this.data.push(item);
     }
     // can also use generic methods
     //removeItem<U>(item: T) {
     removeItem(item) {
+        //removeItem(item: string | number | boolean) {
         // how to remove an item from an array
         // a check if no item is found to just return
         if (this.data.indexOf(item) === -1) {

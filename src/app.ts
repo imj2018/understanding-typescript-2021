@@ -105,18 +105,30 @@ extractAndConvert( { name:'Max' }, 'name');
 
 // better to use a primitive types instead as a specialized DataStorage
 // is likely needed  
- class DataStorage<T extends string | number | boolean> {
+class DataStorage<T extends string | number | boolean> {
  //class DataStorage<T> {
+    //class DataStorage {
+
+    // this says stings numbers and booleans can be mixed into the array
+    //private data: (string | number | boolean)[]= [];
+    // this says either but, for the following methods it is accepting any 
+    // of the types/ free to use any which should not be allowed,
+    // for generics you only choose once i.e DataStorage<T extends string | number | boolean>
+    // generics types lock in a type, union is for flexibility/different type for every 
+    // method call 
+    //private data: (string[] | number[] | boolean[])[]= [];
 
     private data: T[] = [];
 
-    addItem(item: T) {
+   // addItem(item: string | number | boolean) {
+    addItem(item: T) {    
         this.data.push(item);
     }
 
     // can also use generic methods
     //removeItem<U>(item: T) {
     removeItem(item: T) {
+    //removeItem(item: string | number | boolean) {
         // how to remove an item from an array
         // a check if no item is found to just return
         if (this.data.indexOf(item) === -1) {
@@ -198,3 +210,4 @@ function createCourseGoal(
     const names: Readonly<string[]> = ['Max', 'Joe'];
     // name.push('Manu');
     // name.pop();
+    
