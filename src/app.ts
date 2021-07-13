@@ -79,6 +79,8 @@ function countAndDescribe<T extends Lengthy>(element: T):
 console.log(countAndDescribe([]));
 
 
+
+
 // an error is thrown, it is uncertain whether the object returned will 
 // be a key
 // we want U to be a property of T i.e U extends keyof T
@@ -96,5 +98,72 @@ function extractAndConvert<T extends object, U extends keyof T>(
 // won't work, must denote the name property
 // extractAndConvert( { name:'Max' }, 'age');
 extractAndConvert( { name:'Max' }, 'name');
+
+
+
+
+
+// better to use a primitive types instead as a specialized DataStorage
+// is likely needed  
+ class DataStorage<T extends string | number | boolean> {
+ //class DataStorage<T> {
+
+    private data: T[] = [];
+
+    addItem(item: T) {
+        this.data.push(item);
+    }
+
+    // can also use generic methods
+    //removeItem<U>(item: T) {
+    removeItem(item: T) {
+        // how to remove an item from an array
+        // a check if no item is found to just return
+        if (this.data.indexOf(item) === -1) {
+            return;
+        }
+        this.data.splice(this.data.indexOf(item), 1); // -1
+    }
+
+    getItems() {
+        return [...this.data];
+    }
+}
+
+const textStorage = new DataStorage<string>();
+textStorage.addItem('Max');
+//textStorage.addItem('Max');
+textStorage.removeItem('Max');
+console.log(textStorage.getItems());
+
+// textStorage.addItem(10);
+const textStorageNumbers = new DataStorage<number>();
+textStorageNumbers.addItem(10);
+textStorageNumbers.addItem(1.4);
+textStorageNumbers.removeItem(10);
+console.log(textStorageNumbers.getItems());
+
+const textStorageBoth = new DataStorage<number | string>();
+textStorageBoth.addItem('John');
+textStorageBoth.addItem(4);
+textStorageBoth.removeItem(4);
+console.log(textStorageBoth.getItems());
+
+// const textStorageObjects = new DataStorage<object>();
+
+// // need to pass actual object 
+// const johnObj = {name: 'John'}
+
+// textStorageObjects.addItem({name: 'John', age: 50});
+// textStorageObjects.addItem({name: 'Frank', age: 20});
+// textStorageObjects.addItem({name: 'George', age: 20});
+
+// // attempt to remove John (first object) is referencing, 
+// // indexOf(item) is actually passes a new object, javascript will
+// // not be able to find the element and remove the last element -1
+// // textStorageObjects.removeItem({name: 'John'});
+// textStorageObjects.removeItem(johnObj);
+// console.log(textStorageObjects.getItems());
+
 
 
